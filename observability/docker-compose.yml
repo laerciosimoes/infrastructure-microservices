@@ -16,31 +16,38 @@ services:
     restart: unless-stopped
     command: -config.file=/etc/loki/config.yml
     volumes:
-      - ./loki/config.yml:/etc/loki/config.yml
+      - ./loki/config.yml:/etc/loki/config.yml:ro
       - loki-data:/loki
     ports:
       - "3100:3100"
     networks:
       - proxy
 
-  promtail:
-    image: grafana/promtail:3.0.0
+  alloy:
+    image: grafana/alloy:latest
     restart: unless-stopped
-    command: -config.file=/etc/promtail/config.yml
+    command:
+      - run
+      - /etc/alloy/config.alloy
+      - --server.http.listen-addr=0.0.0.0:12345
     volumes:
-      - ./promtail/config.yml:/etc/promtail/config.yml
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./alloy/config.alloy:/etc/alloy/config.alloy:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "12345:12345"
+    depends_on:
+      - loki
     networks:
       - proxy
-
+  
   tempo:
     image: grafana/tempo:latest
     command: [ "-config.file=/etc/tempo.yml" ]
     volumes:
-      - ./tempo/tempo.yml:/etc/tempo.yml
+      - ./tempo/tempo.yml:/etc/tempo.yml:ro
     ports:
       - "4317:4317"
+      - "4318:4318"
       - "3200:3200"
     networks:
       - proxy
