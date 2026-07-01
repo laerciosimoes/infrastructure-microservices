@@ -19,7 +19,7 @@ services:
       - ./loki/config.yml:/etc/loki/config.yml:ro
       - loki-data:/loki
     ports:
-      - "3100:3100"
+      - "3300:3100"
     networks:
       - proxy
 
