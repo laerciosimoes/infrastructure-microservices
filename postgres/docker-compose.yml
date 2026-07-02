@@ -1,0 +1,13 @@
+services:
+  dev_db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: hpcbrasil
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: hpcbrasil
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
