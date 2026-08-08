@@ -32,3 +32,73 @@ loki.write "default" {
     url = "http://loki:3100/loki/api/v1/push"
   }
 }
+
+// Define as URLs que você quer monitorar
+prometheus.exporter.blackbox "sites_check" {
+  config = "
+modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      valid_http_versions: [HTTP/1.1, HTTP/2.0]
+      valid_status_codes: []
+      method: GET
+"
+  target {
+    name = "biohacking.ai"
+    url  = "https://biohacking.ai" 
+  }
+  target {
+    name = "clubedoshoteis"
+    url  = "https://clubedoshoteis.com.br"
+  }
+  target {
+    name = "megapregao"
+    url  = "https://megapregao.com.br"
+  }
+  target {
+    name = "Social Data Tools"
+    url  = "https://socialdatatoools.com"
+  }
+  target {
+    name = "We Find Video"
+    url  = "https://wefindvideo.com"
+  }
+  target {
+    name = "Laercio Simoes"
+    url  = "https://laerciosimoes.com"
+  }
+  target {
+    name = "Tatiana Zardo"
+    url  = "https://tatianazardo.com"
+  }
+  target {
+    name = "Capybaraz"
+    url  = "https://capybaraz.com"
+  }
+  target {
+    name = "Humaniza"
+    url  = "https://humaniza.com"
+  }
+  target {
+    name = "Vicenti Pironti"
+    url  = "https://vicentipironti.com"
+  }
+  target {
+    name = "Coorda"
+    url  = "https://coorda.hpcbrasil.com"
+  }
+}
+
+// Configura o Alloy para enviar os dados coletados ao seu Prometheus
+prometheus.scrape "blackbox" {
+  targets    = prometheus.exporter.blackbox.sites_check.targets
+  forward_to = [prometheus.remote_write.default.receiver]
+}
+
+prometheus.remote_write "default" {
+  endpoint {
+    url = "http://prometheus:9090/api/v1/write"
+  }
+}
