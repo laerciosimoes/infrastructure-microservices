@@ -1,21 +1,8 @@
 global:
   scrape_interval: 15s
 
+
 scrape_configs:
-
-  - job_name: traefik
+  - job_name: 'prometheus'
     static_configs:
-      - targets:
-          - traefik:8080
-
-  - job_name: docker
-
-    static_configs:
-      - targets:
-          - socialdatatools-leads:8000
-          - socialdatatools-crm:8000
-          - socialdatatools-whatsapp:8088
-          - hotels:8000
-          - bookings:8000
-          - notifications:8000
-          - payments:8000
+      - targets: ['localhost:9090']

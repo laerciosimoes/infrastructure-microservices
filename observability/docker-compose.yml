@@ -3,6 +3,11 @@ services:
   prometheus:
     image: prom/prometheus:latest
     restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-remote-write-receiver'
+      - '--web.listen-address=0.0.0.0:9090'
+      - '--storage.tsdb.path=/prometheus'
     ports:
       - "9090:9090"
     volumes:
@@ -22,7 +27,15 @@ services:
       - "3300:3100"
     networks:
       - proxy
-
+  blackbox:
+    image: prom/blackbox-exporter:latest
+    restart: unless-stopped
+    ports:
+      - "9115:9115"
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+    networks:
+      - proxy
   alloy:
     image: grafana/alloy:latest
     restart: unless-stopped
