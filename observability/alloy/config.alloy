@@ -4,15 +4,20 @@ prometheus.scrape "blackbox" {
 
   targets = [
     { "__address__" = "blackbox:9115", "__param_target" = "https://biohacking.ai", "instance" = "https://biohacking.ai", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://revistabiohacking.com", "instance" = "https://revistabiohacking.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://clubedoshoteis.com.br", "instance" = "https://clubedoshoteis.com.br", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://clubedoshoteis.com", "instance" = "https://clubedoshoteis.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://megapregao.com.br", "instance" = "https://megapregao.com.br", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://socialdatatools.com", "instance" = "https://socialdatatools.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://wefindvideo.com", "instance" = "https://wefindvideo.com", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://hpcerp.com.br", "instance" = "https://hpcerp.com.br", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://laerciosimoes.com", "instance" = "https://laerciosimoes.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://tatianazardo.com", "instance" = "https://tatianazardo.com", "job" = "blackbox" },
-    { "__address__" = "blackbox:9115", "__param_target" = "https://capybaraz.com", "instance" = "https://capybaraz.com", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://rifauai.com", "instance" = "https://rifauai.com", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://hpcbrasil.com", "instance" = "https://hpcbrasil.com", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://socialdatatools.com", "instance" = "https://socialdatatools.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://humaniza.com", "instance" = "https://humaniza.com", "job" = "blackbox" },
-    { "__address__" = "blackbox:9115", "__param_target" = "https://vicentipironti.com", "instance" = "https://vicentipironti.com", "job" = "blackbox" },
+    { "__address__" = "blackbox:9115", "__param_target" = "https://vicentepironti.com", "instance" = "https://vicentipironti.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://coorda.hpcbrasil.com", "instance" = "https://coorda.hpcbrasil.com", "job" = "blackbox" },
   ]
 
