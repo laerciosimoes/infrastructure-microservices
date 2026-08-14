@@ -18,7 +18,6 @@ prometheus.scrape "blackbox" {
     { "__address__" = "blackbox:9115", "__param_target" = "https://socialdatatools.com", "instance" = "https://socialdatatools.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://humaniza.com", "instance" = "https://humaniza.com", "job" = "blackbox" },
     { "__address__" = "blackbox:9115", "__param_target" = "https://vicentepironti.com", "instance" = "https://vicentipironti.com", "job" = "blackbox" },
-    { "__address__" = "blackbox:9115", "__param_target" = "https://coorda.hpcbrasil.com", "instance" = "https://coorda.hpcbrasil.com", "job" = "blackbox" },
   ]
 
   metrics_path = "/probe"
